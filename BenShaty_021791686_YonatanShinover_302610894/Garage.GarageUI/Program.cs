@@ -9,7 +9,7 @@ namespace Garage.GarageUI
     class Program
     {
         public int MyProperty { get; set; }
-        public int hgfh { get; set; }
+        public int cmkmkmd { get; set; }
         static void Main(string[] args)
         {
             
