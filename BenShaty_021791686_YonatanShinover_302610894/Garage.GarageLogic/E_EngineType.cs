@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace Garage.GarageLogic
 {
     /// <summary>
-    /// This is the garage Logic main class
+    /// This is the Engine type enum
     /// </summary>
-    public class GarageLogic
+    public enum E_EngineType
     {
-     
+        Fuel,
+        Electric
     }
 }
