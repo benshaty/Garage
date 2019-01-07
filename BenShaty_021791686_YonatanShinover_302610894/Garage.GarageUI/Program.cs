@@ -8,9 +8,10 @@ namespace Garage.GarageUI
 {
     class Program
     {
+        public int MyProperty { get; set; }
         static void Main(string[] args)
         {
-            public int MyProperty { get; set; }
-    }
+            
+        }
     }
 }
