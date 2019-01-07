@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="E_Color.cs" />
     <Compile Include="E_EngineType.cs" />
+    <Compile Include="E_FuelType.cs" />
+    <Compile Include="E_LicenseType.cs" />
+    <Compile Include="E_VehicleType.cs" />
     <Compile Include="GarageLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
