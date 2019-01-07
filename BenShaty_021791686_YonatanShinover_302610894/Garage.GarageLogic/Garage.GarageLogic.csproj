@@ -51,6 +51,7 @@
     <Compile Include="E_VehicleType.cs" />
     <Compile Include="GarageLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wheel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
