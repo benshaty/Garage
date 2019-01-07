@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Garage.GarageLogic;
 
-namespace Garage.GarageUI
+namespace Garage.GarageLogic
 {
-    class Program
+    class Wheel
     {
-        static void Main(string[] args)
-        {
 
-        }
     }
 }
