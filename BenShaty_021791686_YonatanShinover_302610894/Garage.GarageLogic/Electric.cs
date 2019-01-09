@@ -8,7 +8,7 @@ namespace Garage.GarageLogic
 {
     class Electric : Engine
     {
-        public float CurrentAmount { get; set; }
+        
         public float MaxAmount { get; set; }
         /// <summary>
         /// Constractor for Electric type Engine
@@ -16,6 +16,7 @@ namespace Garage.GarageLogic
         /// <param name="maxAmount">max amount of fuel can be</param>
         public Electric(float maxAmount)
         {
+            EngineType = E_EngineType.Electric;
             CurrentAmount = maxAmount;
             MaxAmount = maxAmount;
         }
