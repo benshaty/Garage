@@ -54,6 +54,10 @@
       <Project>{af8bac16-a144-44cc-98c8-3037726c52e9}</Project>
       <Name>Garage.GarageLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{f711ddd0-c03c-44cc-9315-9ba4040436bf}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
