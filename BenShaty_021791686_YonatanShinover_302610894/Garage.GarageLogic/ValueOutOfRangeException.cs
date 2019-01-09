@@ -19,19 +19,26 @@ namespace Garage.GarageLogic
         {
 
         }
-        public ValueOutOfRangeException(string massage, float maxValue, float minValue, float value) : base(massage)
+        public ValueOutOfRangeException(string massage, float maxValue, float minValue, float userValue) : base(massage)
         {
             MaxValue = maxValue;
             MinValue = minValue;
-            CustomMassege = checkErr(MaxValue,MinValue,value);
+            CustomMassege = checkErr(MaxValue,MinValue,userValue);
         }
-        private string checkErr(float max, float min , float value)
+        /// <summary>
+        /// Check what kind or error user get
+        /// </summary>
+        /// <param name="max">max value</param>
+        /// <param name="min">min value</param>
+        /// <param name="userValue">user input</param>
+        /// <returns></returns>
+        private string checkErr(float max, float min , float userValue)
         {
             string returnData = "";
-            if (value > max)
+            if (userValue > max)
             {
                 returnData = "Value is Bigger then Max";
-            } else if (min > value)
+            } else if (min > userValue)
             {
                 returnData = "Value is Smaller the Min";
             }
