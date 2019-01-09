@@ -9,7 +9,6 @@ namespace Garage.GarageLogic
     class Gasoline : Engine
     {
         public E_FuelType FuelType { get; set; }
-        public float CurrentAmount { get; set; }
         public float MaxAmount { get; set; }
         /// <summary>
         /// Constractor for Gasoline type Engine
@@ -18,10 +17,10 @@ namespace Garage.GarageLogic
         /// <param name="maxAmount">max amount of fuel can be</param>
         public Gasoline(E_FuelType fuelType, float maxAmount)
         {
+            EngineType = E_EngineType.Fuel;
             CurrentAmount = maxAmount;
             MaxAmount = maxAmount;
             FuelType = fuelType;
-
         }
         /// <summary>
         /// Add energy to an Gasoline Vehicle

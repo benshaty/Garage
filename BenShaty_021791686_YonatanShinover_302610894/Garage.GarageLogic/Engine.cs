@@ -8,6 +8,8 @@ namespace Garage.GarageLogic
 {
     public class Engine
     {
+        public E_EngineType EngineType { get; protected set; }
+        public float CurrentAmount { get; set; }
         /// <summary>
         /// Add energy to an Electric Vehicle
         /// </summary>
