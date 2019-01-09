@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Utils
 {
@@ -13,26 +9,27 @@ namespace Utils
     /// </summary>
     public static class Parsers
     {
-        public static int GetIntFromUser(string userInput)
+        public static int GetIntFromUser(string message)
         {
             bool res;
             int returnNumber;
             do
             {
-                res = int.TryParse(userInput, out returnNumber);
-            } while (res);
+                Console.WriteLine(message);
+                res = int.TryParse(Console.ReadLine(), out returnNumber);
+            } while (!res);
             return returnNumber;
         }
-        public static double GetDoubleFromUser(string userInput)
+        public static double GetDoubleFromUser(string message)
         {
             bool res;
             double returnNumber;
             do
             {
-                res = double.TryParse(userInput, out returnNumber);
-            } while (res);
+                Console.WriteLine(message);
+                res = double.TryParse(Console.ReadLine(), out returnNumber);
+            } while (!res);
             return returnNumber;
         }
-
     }
 }
