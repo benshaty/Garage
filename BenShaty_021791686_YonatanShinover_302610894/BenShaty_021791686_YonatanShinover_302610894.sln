@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage.GarageUI", "Garage.G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garage.GarageLogic", "Garage.GarageLogic\Garage.GarageLogic.csproj", "{AF8BAC16-A144-44CC-98C8-3037726C52E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{E93C2FB1-84FE-413C-936A-8CE3ACA7CFF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AF8BAC16-A144-44CC-98C8-3037726C52E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF8BAC16-A144-44CC-98C8-3037726C52E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF8BAC16-A144-44CC-98C8-3037726C52E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E93C2FB1-84FE-413C-936A-8CE3ACA7CFF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E93C2FB1-84FE-413C-936A-8CE3ACA7CFF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E93C2FB1-84FE-413C-936A-8CE3ACA7CFF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E93C2FB1-84FE-413C-936A-8CE3ACA7CFF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
