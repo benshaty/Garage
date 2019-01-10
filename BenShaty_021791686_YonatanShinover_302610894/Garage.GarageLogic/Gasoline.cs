@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    ///  /// This is the Gasoline Engine type Class
+    /// </summary>
     class Gasoline : Engine
     {
+        /// <summary>
+        /// This is the Fuel type in a Vehicle
+        /// </summary>
         public E_FuelType FuelType { get; set; }
+        /// <summary>
+        /// This is the Max amount Energy/Fuel in a Vehicle
+        /// </summary>
         public float MaxAmount { get; set; }
         /// <summary>
         /// Constractor for Gasoline type Engine

@@ -6,24 +6,27 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    /// This is an Exception for Out Of Range Class
+    /// </summary>
     class ValueOutOfRangeException : Exception
     {
         private float MaxValue;
         private float MinValue;
-        public string CustomMassege { get; set; }
+        public string CustomMessage { get; set; }
         public ValueOutOfRangeException()
         {
 
         }
-        public ValueOutOfRangeException(string massage) : base(massage)
+        public ValueOutOfRangeException(string message) : base(message)
         {
 
         }
-        public ValueOutOfRangeException(string massage, float maxValue, float minValue, float userValue) : base(massage)
+        public ValueOutOfRangeException(string message, float maxValue, float minValue, float userValue) : base(message)
         {
             MaxValue = maxValue;
             MinValue = minValue;
-            CustomMassege = checkErr(MaxValue,MinValue,userValue);
+            CustomMessage = checkErr(MaxValue,MinValue,userValue);
         }
         /// <summary>
         /// Check what kind or error user get

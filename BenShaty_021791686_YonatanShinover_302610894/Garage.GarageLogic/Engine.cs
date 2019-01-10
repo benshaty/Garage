@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    /// This is the Engine Class
+    /// </summary>
     public class Engine
     {
+        /// <summary>
+        /// This is the Engine type of a Vehicle
+        /// </summary>
         public E_EngineType EngineType { get; protected set; }
         public float CurrentAmount { get; set; }
         /// <summary>

@@ -6,10 +6,22 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    /// The wheel Class
+    /// </summary>
    public class Wheel
     {
+        /// <summary>
+        /// The manufacturer wheel name
+        /// </summary>
         public string ManufacturerName { get; set; }
+        /// <summary>
+        /// The current air presure in the wheel
+        /// </summary>
         public float WheelAirPresure { get; set; }
+        /// <summary>
+        /// The maximum amount of the wheel air presure
+        /// </summary>
         public float MaxAirPresure { get; set; }
         /// <summary>
         /// add air to wheel only if not over the maximum air pressure 
