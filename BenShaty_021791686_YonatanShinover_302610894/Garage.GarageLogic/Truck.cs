@@ -16,7 +16,7 @@ namespace Garage.GarageLogic
         /// </summary>
         public bool HazardousMaterials { get; set; }
         /// <summary>
-        /// This is the Max weight amount a Truck can lift
+        /// This is the Max weight amount a Truck can carrey
         /// </summary>
         public float MaxWeight { get; set; }
 
