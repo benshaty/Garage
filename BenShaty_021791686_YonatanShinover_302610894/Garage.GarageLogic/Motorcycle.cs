@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Garage.GarageLogic
 {
     /// <summary>
-    /// This is the Motorcycle Class
+    /// This is the Motorcycle Class inheriting from Vehicle
     /// </summary>
     class Motorcycle : Vehicle
     {
