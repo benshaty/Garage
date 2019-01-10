@@ -53,6 +53,7 @@
     <Compile Include="E_VehicleType.cs" />
     <Compile Include="GarageLogic.cs" />
     <Compile Include="Gasoline.cs" />
+    <Compile Include="Motorcycle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="Vehicle.cs" />
