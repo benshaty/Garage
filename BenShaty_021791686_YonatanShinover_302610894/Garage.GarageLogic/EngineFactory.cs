@@ -11,9 +11,13 @@ namespace Garage.GarageLogic
     /// </summary>
     sealed class EngineFactory
     {
-        public Engine createNewEngine (E_EngineType engineType)
+        public Engine CreateNewEngine (E_FuelType fuelType,float maxAmount)
         {
-            return engineType;
+            return new Gasoline(fuelType,maxAmount);
+        }
+        public Engine CreateNewEngine(float maxAmount)
+        {
+            return new Electric(maxAmount);
         }
     }
 }

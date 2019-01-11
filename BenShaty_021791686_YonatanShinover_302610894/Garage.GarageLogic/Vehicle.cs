@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is the Vehicle class
     /// </summary>
-    class Vehicle
+    public class Vehicle
     {
         /// <summary>
         /// This is the Vehicle model firm

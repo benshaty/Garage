@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is the Car Class inheriting from Vehicle
     /// </summary>
-    class Car : Vehicle
+    public class Car : Vehicle
     {
         /// <summary>
         /// This is the Color of the Car

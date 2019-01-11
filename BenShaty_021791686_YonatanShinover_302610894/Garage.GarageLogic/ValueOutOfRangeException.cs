@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is an Exception for Out Of Range Class
     /// </summary>
-    class ValueOutOfRangeException : Exception
+    public class ValueOutOfRangeException : Exception
     {
         private float MaxValue;
         private float MinValue;

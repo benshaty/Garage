@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is the Electric Engine type Class
     /// </summary>
-    class Electric : Engine
+    public class Electric : Engine
     {
         /// <summary>
         /// This is the Max amount Energy/Fuel in a Vehicle 

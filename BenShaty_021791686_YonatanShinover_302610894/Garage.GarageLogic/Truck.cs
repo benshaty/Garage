@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is the Truck Class inheriting from Vehicle
     /// </summary>
-    class Truck : Vehicle
+   public  class Truck : Vehicle
     {
         /// <summary>
         /// This is the True/False Hazardous materials status of the Truck 

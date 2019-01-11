@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     ///  /// This is the Gasoline Engine type Class
     /// </summary>
-    class Gasoline : Engine
+    public class Gasoline : Engine
     {
         /// <summary>
         /// This is the Fuel type in a Vehicle
