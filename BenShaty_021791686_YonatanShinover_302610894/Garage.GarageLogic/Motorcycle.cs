@@ -19,5 +19,15 @@ namespace Garage.GarageLogic
         /// This is the Engine Volume of the Motorcycle
         /// </summary>
         public int EngineVolume { get; set; }
+        public Motorcycle(E_LicenseType licenseType, int engineVolume,
+            E_VehicleType vehicleType, string vehicleModel, string vehicleLicensePlate,
+            string ownerName, string OwnerPhone, E_VehicleStateInGarage vehicleState,
+            string wheelManufacturerName, Engine vehicleEngine)
+            : base(vehicleType, vehicleModel, vehicleLicensePlate, ownerName, OwnerPhone, vehicleState,
+                  wheelManufacturerName, vehicleEngine)
+        {
+            LicenseType = licenseType;
+            EngineVolume = engineVolume;
+        }
     }
 }

@@ -20,6 +20,10 @@ namespace Garage.GarageLogic
         /// </summary>
         public string VehicleLicensePlate { get; set; }
         /// <summary>
+        /// set the vehicle type
+        /// </summary>
+        public E_VehicleType VehicleType { get; set; }
+        /// <summary>
         /// This is the owner of the vehicle name
         /// </summary>
         public string OwnerName { get; private set; }
@@ -39,6 +43,31 @@ namespace Garage.GarageLogic
         /// This is the Vehicle engine type
         /// </summary>
         public Engine VehicleEngine { get; set; }
+        public Vehicle(E_VehicleType vehicleType ,string vehicleModel, string vehicleLicensePlate, string ownerName, 
+            string OwnerPhone, E_VehicleStateInGarage vehicleState, string wheelManufacturerName, Engine vehicleEngine)
+        {
+            float maxAirPresureByVehicleType;
+            switch (vehicleType)
+            {
+                case E_VehicleType.Bike:
+                    maxAirPresureByVehicleType = 28.0f;
+                    break;
+                case E_VehicleType.Car:
+                    maxAirPresureByVehicleType = 32.0f;
+                    break;
+                case E_VehicleType.Truck:
+                    maxAirPresureByVehicleType = 34.0f;
+                    break;
+                default:
+                    throw new ArgumentException("Invalid vehicle type");
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                VehicleWheels[i] = new Wheel(wheelManufacturerName, maxAirPresureByVehicleType);
+            }
+            VehicleEngine = vehicleEngine;
+        }
         /// <summary>
         /// Override ToString method.
         /// return string of all vehicle details

@@ -19,5 +19,15 @@ namespace Garage.GarageLogic
         /// This is the Doors number of a Car
         /// </summary>
         public E_NumOfDoors Doors { get; set; }
+        public Car(E_Color carColor, E_NumOfDoors carNumOfDoors, 
+            E_VehicleType vehicleType, string vehicleModel, string vehicleLicensePlate, 
+            string ownerName,string OwnerPhone, E_VehicleStateInGarage vehicleState, 
+            string wheelManufacturerName, Engine vehicleEngine) 
+            : base(vehicleType,vehicleModel,vehicleLicensePlate,ownerName,OwnerPhone,vehicleState,
+                  wheelManufacturerName,vehicleEngine)
+        {
+            Color = carColor;
+            Doors = carNumOfDoors;
+        }
     }
 }
