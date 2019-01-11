@@ -37,6 +37,10 @@ namespace Garage.GarageLogic
                 throw new ValueOutOfRangeException("Select less amount", MaxAirPresure, 0, (WheelAirPresure + airToAdd));
             }
         } 
+        public void AddAirToMax()
+        {
+            WheelAirPresure = MaxAirPresure;
+        }
         /// <summary>
         /// Create A new Wheel Obj
         /// </summary>

@@ -12,7 +12,15 @@
     {
         public static void ChangeVehicleStateInGarage(Vehicle vehicleToChange, E_VehicleStateInGarage VehicleStateInGarage)
         {
-
+            vehicleToChange.VehicleStateInGarage = VehicleStateInGarage;
         }
+        public static void AddAirToVehicleWheelsToMax(Vehicle vehicleToChange)
+        {
+            foreach (var wheel in vehicleToChange.VehicleWheels)
+            {
+                wheel.AddAirToMax();
+            }
+        }
+
     }
 }
