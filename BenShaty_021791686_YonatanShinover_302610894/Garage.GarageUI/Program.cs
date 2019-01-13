@@ -11,7 +11,7 @@ namespace Garage.GarageUI
     {
         static void Main(string[] args)
         {
-
+            GarageApp.StartApp();
         }
     }
 }

@@ -10,8 +10,7 @@ namespace Garage.GarageUI
     {
         public static void StartApp()
         {
-            Console.WriteLine("Welcome to our Garage");
+            Console.WriteLine("Welcome to our garage");
         }
     }
-
 }
