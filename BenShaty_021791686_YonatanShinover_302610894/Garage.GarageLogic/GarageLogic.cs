@@ -1,4 +1,6 @@
-﻿namespace Garage.GarageLogic
+﻿using System.Collections.Generic;
+
+namespace Garage.GarageLogic
 {
     /// <summary>
     /// This is the garage Logic main class
@@ -10,6 +12,7 @@
     */
     public static class GarageLogic
     {
+        public static Dictionary<string, Vehicle> GarageDirectory { get; set; }
         public static void ChangeVehicleStateInGarage(Vehicle vehicleToChange, E_VehicleStateInGarage VehicleStateInGarage)
         {
             vehicleToChange.VehicleStateInGarage = VehicleStateInGarage;
