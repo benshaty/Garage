@@ -9,7 +9,7 @@ namespace Garage.GarageLogic
     /// <summary>
     /// This is the Motorcycle Class inheriting from Vehicle
     /// </summary>
-    class Motorcycle : Vehicle
+    public class Motorcycle : Vehicle
     {
         /// <summary>
         /// The License type of the Motorcycle
