@@ -1,4 +1,5 @@
 ﻿using System;
+using Garage.GarageLogic;
 
 namespace Utils
 {
@@ -9,6 +10,31 @@ namespace Utils
     /// </summary>
     public static class Parsers
     {
+        public static E_FirstMenu ParseFirstMenu(string massege)
+        {
+            E_FirstMenu result;
+            do
+            {
+
+            int intTempResualt = GetIntFromUser(massege);
+            switch ((E_FirstMenu)intTempResualt)
+            {
+                case E_FirstMenu.Exit_system:
+                case E_FirstMenu.Add_a_vehicle:
+                case E_FirstMenu.Show_vehicles_by_license_plate:
+                case E_FirstMenu.Show_vehicles_by_license_plate_with_filter:
+                case E_FirstMenu.Change_car_state:
+                case E_FirstMenu.Add_air_to_vehicle_wheels:
+                case E_FirstMenu.Add_energy_to_vehicle:
+                case E_FirstMenu.Show_vehicle_full_details:
+                    result = (E_FirstMenu)intTempResualt;
+                    break;
+                default:
+                    throw new FormatException("Invalid selection");
+            }
+            } while (!Enum.IsDefined(typeof(E_FirstMenu), result));
+            return result;
+        }
         /// <summary>
         /// Get and Parse user input from console to int
         /// </summary>
@@ -27,7 +53,7 @@ namespace Utils
                     returnNumber = parseInt(Console.ReadLine());
                     res = true;
                 }
-                catch (Exception ex)
+                catch (FormatException ex)
                 {
                     Console.WriteLine(ex.Message);
                     res = false;
@@ -54,7 +80,7 @@ namespace Utils
                     returnNumber = parseDouble(Console.ReadLine());
                     res = true;
                 }
-                catch (Exception ex)
+                catch (FormatException ex)
                 {
                     Console.WriteLine(ex.Message);
                     res = false;
@@ -81,7 +107,7 @@ namespace Utils
                     returnNumber = parseFloat(Console.ReadLine());
                     res = true;
                 }
-                catch (Exception ex)
+                catch (FormatException ex)
                 {
                     Console.WriteLine(ex.Message);
                     res = false;
