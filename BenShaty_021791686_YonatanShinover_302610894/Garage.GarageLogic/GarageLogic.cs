@@ -12,7 +12,7 @@ namespace Garage.GarageLogic
     */
     public static class GarageLogic
     {
-        public static Dictionary<string, Vehicle> GarageDirectory { get; set; }
+        public static Dictionary<string, Vehicle> GarageDirectory = new Dictionary<string, Vehicle>();
         public static void ChangeVehicleStateInGarage(Vehicle vehicleToChange, E_VehicleStateInGarage VehicleStateInGarage)
         {
             vehicleToChange.VehicleStateInGarage = VehicleStateInGarage;

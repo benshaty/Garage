@@ -2,9 +2,9 @@
 
 namespace Garage.GarageLogic
 {
-    public sealed class VehicleFactory
+    public static class VehicleFactory
     {
-        public Motorcycle CreateNewMotorcycle(E_EngineType engineType, E_LicenseType licenseType, int engineVolume,
+        public static Motorcycle CreateNewMotorcycle(E_EngineType engineType, E_LicenseType licenseType, int engineVolume,
             string vehicleModel, string licencsePlate, string ownerName, string wheelManufacturerName, string OwnerPhone)
         {
             Engine engine;
@@ -24,7 +24,7 @@ namespace Garage.GarageLogic
                 E_VehicleStateInGarage.InWork, wheelManufacturerName, engine);
             return motorcycle;
         }
-        public Car CreateNewCar(E_EngineType engineType, E_Color color, E_NumOfDoors numOfDoors, string vehicleModel,
+        public static Car CreateNewCar(E_EngineType engineType, E_Color color, E_NumOfDoors numOfDoors, string vehicleModel,
             string VehicleLicensePlate, string ownerName, string ownerPhone, string wheelManufacturerName)
         {
             Engine engine;
@@ -43,7 +43,7 @@ namespace Garage.GarageLogic
                 ownerName, ownerPhone, E_VehicleStateInGarage.InWork, wheelManufacturerName, engine);
             return car;
         }
-        public Truck CreateNewFuelTruck(bool hezerdosMat, float maxWeight, string vehicleModel,
+        public static Truck CreateNewFuelTruck(bool hezerdosMat, float maxWeight, string vehicleModel,
             string VehicleLicensePlate, string ownerName, string ownerPhone, string wheelManufacturerName)
         {
             Engine engine = new Gasoline(E_FuelType.Soler, 130.0f);

@@ -11,9 +11,10 @@ namespace Garage.GarageUI
     {
         public static void StartApp()
         {
+            Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
+            GarageLogic.GarageLogic.GarageDirectory.Add("sss", x);
             Console.WriteLine("Welcome to our garage");
             showmenu();
-            actionForFirstMenu(getFirstMenuResponse());
             Console.WriteLine("Have a good one!!!");
         }
 
@@ -25,6 +26,7 @@ namespace Garage.GarageUI
             {
                 Console.WriteLine($"{(int) item} - {item.ToString().Replace("_"," ")}");
             }
+            actionForFirstMenu(getFirstMenuResponse());
         }
         private static E_FirstMenu getFirstMenuResponse()
         {
@@ -35,8 +37,8 @@ namespace Garage.GarageUI
             }
             catch (FormatException ex)
             {
-
                 Console.WriteLine(ex.Message);
+                getFirstMenuResponse();
             }
             return userResponse;
         }
@@ -104,7 +106,10 @@ namespace Garage.GarageUI
 
         private static void showCarsByLicencePlate()
         {
-            throw new NotImplementedException();
+            foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
+            {
+                Console.WriteLine(item.Key);
+            }
         }
     }
 }
