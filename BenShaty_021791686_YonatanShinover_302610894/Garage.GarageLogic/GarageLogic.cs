@@ -24,6 +24,16 @@ namespace Garage.GarageLogic
                 wheel.AddAirToMax();
             }
         }
+        public static Vehicle GetVehicleByLicensePlate(string licensePlate)
+        {
+            Vehicle vehicleToReturn;
+            if (!GarageDirectory.ContainsKey(licensePlate))
+            {
+                throw new KeyNotFoundException("Vehicle not present!");
+            }
+            GarageDirectory.TryGetValue(licensePlate, out vehicleToReturn);
+            return vehicleToReturn;
+        }
 
     }
 }

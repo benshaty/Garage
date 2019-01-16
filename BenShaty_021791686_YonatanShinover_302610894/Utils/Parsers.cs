@@ -129,6 +129,35 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
+
+        public static E_VehicleStateInGarage ParseStateInGarage()
+        {
+            E_VehicleStateInGarage result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_VehicleStateInGarage)))
+                {
+                    if ((int)item > 0)
+                    {
+                        Console.WriteLine($"{(int)item} - {item}");
+                    }
+                }
+                int intTempResualt = GetIntFromUser("Select Vehicle state");
+                switch ((E_VehicleStateInGarage)intTempResualt)
+                {
+                    case E_VehicleStateInGarage.NotInGarage:
+                    case E_VehicleStateInGarage.InWork:
+                    case E_VehicleStateInGarage.Ready:
+                    case E_VehicleStateInGarage.Paid:
+                        result = (E_VehicleStateInGarage)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+                }
+            } while (!Enum.IsDefined(typeof(E_VehicleStateInGarage), result));
+            return result;
+        }
+
         private static double parseDouble(string dataToParse)
         {
             try

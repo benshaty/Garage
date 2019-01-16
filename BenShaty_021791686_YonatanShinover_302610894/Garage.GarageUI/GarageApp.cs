@@ -64,7 +64,7 @@ namespace Garage.GarageUI
                     addAirToVehileWheels();
                     break;
                 case E_FirstMenu.Add_energy_to_vehicle:
-                    addEnergyTovVhicle();
+                    addEnergyToVhicle();
                     break;
                 case E_FirstMenu.Show_vehicle_full_details:
                     showVehicleFullDetails();
@@ -74,7 +74,8 @@ namespace Garage.GarageUI
             }
         }
 
-        private static void addEnergyTovVhicle()
+
+        private static void addEnergyToVhicle()
         {
             throw new NotImplementedException();
         }
@@ -91,25 +92,70 @@ namespace Garage.GarageUI
 
         private static void addAVehicle()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("add a vehicle");
         }
 
         private static void changeCarState()
         {
-            throw new NotImplementedException();
-        }
+            Console.WriteLine("Enter VehicleLicensePlate");
+            string licensePlate = Console.ReadLine();
+            E_VehicleStateInGarage vehicleState = getVehicleStateFromUser();
+            try
+            {
+                Vehicle vehicle = GarageLogic.GarageLogic.GetVehicleByLicensePlate(licensePlate);
+                GarageLogic.GarageLogic.ChangeVehicleStateInGarage(vehicle, vehicleState);
+                Console.WriteLine($"{vehicle.VehicleType} changed status to {vehicle.VehicleStateInGarage}");
+                showmenu();
+            }
+            catch (Exception)
+            {
 
+                Console.WriteLine("Vehicle is not in garage");
+                Console.WriteLine("Do you want to put vehicle in the garage?");
+                string answer = Console.ReadLine();
+                if (answer.StartsWith("y") || answer.StartsWith("Y"))
+                {
+                    addAVehicle();
+                }
+                else
+                {
+                    showmenu();
+                }
+            }
+        }
+        
         private static void showCarsByLicencePlateWithFilter()
         {
-            throw new NotImplementedException();
+            showCarsByLicencePlate(getVehicleStateFromUser());  
         }
-
         private static void showCarsByLicencePlate()
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
                 Console.WriteLine(item.Key);
             }
+        }
+        private static void showCarsByLicencePlate(E_VehicleStateInGarage state)
+        {
+            foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
+            {
+                if (item.Value.VehicleStateInGarage == state)
+                    Console.WriteLine(item.Key);
+            }
+        }
+        private static E_VehicleStateInGarage getVehicleStateFromUser()
+        {
+            E_VehicleStateInGarage userResponse = E_VehicleStateInGarage.NotInGarage;
+            try
+            {
+                userResponse = Utils.Parsers.ParseStateInGarage();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message);
+                getFirstMenuResponse();
+            }
+            return userResponse;
         }
     }
 }

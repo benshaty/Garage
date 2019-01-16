@@ -5,6 +5,7 @@
     /// </summary>
     public enum E_VehicleStateInGarage
     {
+        NotInGarage,
         InWork,
         Ready,
         Paid
