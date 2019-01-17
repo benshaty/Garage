@@ -26,7 +26,7 @@ namespace Garage.GarageLogic
         /// <summary>
         /// This is the owner of the vehicle name
         /// </summary>
-        public string OwnerName { get; private set; }
+        public string OwnerName { get; set; }
         /// <summary>
         /// This is the owner of the vehicle Phone number
         /// </summary>
@@ -44,9 +44,15 @@ namespace Garage.GarageLogic
         /// </summary>
         public Engine VehicleEngine { get; set; }
         public Vehicle(E_VehicleType vehicleType ,string vehicleModel, string vehicleLicensePlate, string ownerName, 
-            string OwnerPhone, E_VehicleStateInGarage vehicleState, string wheelManufacturerName, Engine vehicleEngine)
+            string ownerPhone, E_VehicleStateInGarage vehicleState, string wheelManufacturerName, Engine vehicleEngine)
         {
             float maxAirPresureByVehicleType;
+            VehicleLicensePlate = vehicleLicensePlate;
+            OwnerName = ownerName;
+            OwnerPhone = ownerPhone;
+            VehicleStateInGarage = vehicleState;
+            VehicleEngine = vehicleEngine;
+            VehicleModel = vehicleModel;
             switch (vehicleType)
             {
                 case E_VehicleType.Bike:
@@ -76,15 +82,16 @@ namespace Garage.GarageLogic
         public override string ToString()
         {
             // set basic properties text to result
-            string res =  "Vehicle: "+ VehicleLicensePlate + ", " + VehicleModel + ", " + OwnerName + ", " + OwnerPhone + ", " + VehicleStateInGarage + " ";
+            string res =  "Vehicle: "+ VehicleLicensePlate + ", Model: " + VehicleModel + ", Owner: " + 
+                OwnerName + ", Owner phone: " + OwnerPhone + ", State in Garage: " + VehicleStateInGarage + ", ";
             // foreach loop to get all wheels details
             foreach (var wheel in VehicleWheels)
             {
                 // add details to result string
-                res += wheel.ManufacturerName + " " + wheel.WheelAirPresure + " ";
+                res += wheel.ManufacturerName + ", " + wheel.WheelAirPresure + ", ";
             }
             // add engine type to result string
-            res += VehicleEngine.EngineType + " " + VehicleEngine.CurrentAmount + " ";
+            res += VehicleEngine.EngineType + ", " + VehicleEngine.CurrentAmount + ", ";
             // check if engine type is fuel and add data to result string
             switch (VehicleEngine.EngineType)
             {

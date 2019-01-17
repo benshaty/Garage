@@ -115,6 +115,12 @@ namespace Utils
             } while (!res);
             return returnNumber;
         }
+
+        public static E_FuelType getFuelTypeFromUser()
+        {
+            throw new NotImplementedException();
+        }
+
         private static int parseInt(string dataToParse)
         {
             try
