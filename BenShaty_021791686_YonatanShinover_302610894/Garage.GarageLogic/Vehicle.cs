@@ -36,9 +36,10 @@ namespace Garage.GarageLogic
         /// </summary>
         public E_VehicleStateInGarage VehicleStateInGarage { get; set; }
         /// <summary>
-        /// This is the creation of 4 wheels array object
+        /// This is wheels object
         /// </summary>
-        public Wheel[] VehicleWheels = new Wheel[4];
+        public Wheel VehicleWheels { get; set; }
+        public E_NumOfWheels NumOfWheels { get; set; }
         /// <summary>
         /// This is the Vehicle engine type
         /// </summary>
@@ -67,11 +68,8 @@ namespace Garage.GarageLogic
                 default:
                     throw new ArgumentException("Invalid vehicle type");
             }
-
-            for (int i = 0; i < 4; i++)
-            {
-                VehicleWheels[i] = new Wheel(wheelManufacturerName, maxAirPresureByVehicleType);
-            }
+            
+            VehicleWheels = new Wheel(wheelManufacturerName, maxAirPresureByVehicleType);
             VehicleEngine = vehicleEngine;
         }
         /// <summary>
@@ -84,12 +82,8 @@ namespace Garage.GarageLogic
             // set basic properties text to result
             string res =  "Vehicle: "+ VehicleLicensePlate + ", Model: " + VehicleModel + ", Owner: " + 
                 OwnerName + ", Owner phone: " + OwnerPhone + ", State in Garage: " + VehicleStateInGarage + ", ";
-            // foreach loop to get all wheels details
-            foreach (var wheel in VehicleWheels)
-            {
-                // add details to result string
-                res += wheel.ManufacturerName + ", " + wheel.WheelAirPresure + ", ";
-            }
+            // add details to result string
+            res += "Wheels manufacturer name: " + VehicleWheels.ManufacturerName + ", Wheels air presure" + VehicleWheels.WheelAirPresure + ", ";
             // add engine type to result string
             res += VehicleEngine.EngineType + ", " + VehicleEngine.CurrentAmount + ", ";
             // check if engine type is fuel and add data to result string

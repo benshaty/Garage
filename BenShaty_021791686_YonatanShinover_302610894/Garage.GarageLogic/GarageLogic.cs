@@ -19,10 +19,7 @@ namespace Garage.GarageLogic
         }
         public static void AddAirToVehicleWheelsToMax(Vehicle vehicleToChange)
         {
-            foreach (var wheel in vehicleToChange.VehicleWheels)
-            {
-                wheel.AddAirToMax();
-            }
+            vehicleToChange.VehicleWheels.AddAirToMax();
         }
         public static Vehicle GetVehicleByLicensePlate(string licensePlate)
         {

@@ -28,6 +28,7 @@ namespace Garage.GarageLogic
         {
             Color = carColor;
             Doors = carNumOfDoors;
+            NumOfWheels = E_NumOfWheels.Four;
         }
     }
 }

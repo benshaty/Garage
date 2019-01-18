@@ -53,6 +53,7 @@
     <Compile Include="E_GarageMenu.cs" />
     <Compile Include="E_LicenseType.cs" />
     <Compile Include="E_NumOfDoors.cs" />
+    <Compile Include="E_NumOfWheels.cs" />
     <Compile Include="E_VehicleType.cs" />
     <Compile Include="GarageLogic.cs" />
     <Compile Include="Gasoline.cs" />

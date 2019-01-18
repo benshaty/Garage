@@ -24,10 +24,18 @@ namespace Garage.GarageLogic
         /// </summary>
         /// <param name="fuelType">type of fuel for the vehicle</param>
         /// <param name="maxAmount">max amount of fuel can be</param>
-        public Gasoline(E_FuelType fuelType, float maxAmount)
+        /// <param name="currentAmount">current amount of fuel</param>
+        public Gasoline(E_FuelType fuelType, float maxAmount, float currentAmount)
         {
             EngineType = E_EngineType.Fuel;
-            CurrentAmount = maxAmount;
+            if (currentAmount > maxAmount)
+            {
+                CurrentAmount = maxAmount;
+            }
+            else
+            {
+                CurrentAmount = currentAmount;
+            }
             MaxAmount = maxAmount;
             FuelType = fuelType;
         }

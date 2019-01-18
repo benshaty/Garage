@@ -12,7 +12,7 @@ namespace Garage.GarageUI
     {
         public static void StartApp()
         {
-            Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
+            Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(70f,true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
             GarageLogic.GarageLogic.GarageDirectory.Add("sss", x);
             Console.WriteLine("Welcome to our garage");
             bool continueFlag = true;
@@ -49,6 +49,7 @@ namespace Garage.GarageUI
         }
         private static bool actionForFirstMenu(E_FirstMenu e_FirstMenu)
         {
+            Console.WriteLine("=============================================");
             bool result = true;
             switch (e_FirstMenu)
             {
@@ -83,20 +84,22 @@ namespace Garage.GarageUI
             return result;
         }
 
-        //TODO: fix addVehicle method
         private static void addAVehicle()
         {
             E_VehicleType vehicleType;
             try
             {
                 vehicleType = Utils.Parsers.ParseVehicleType();
+                E_EngineType engineType;
                 switch (vehicleType)
                 {
                     case E_VehicleType.Bike:
-                        addNewBike();
+                        engineType = getEngineType();
+                        addNewBike(engineType);
                         break;
                     case E_VehicleType.Car:
-                        addNewCar();
+                        engineType = getEngineType();
+                        addNewCar(engineType);
                         break;
                     case E_VehicleType.Truck:
                         addNewTruck();
@@ -111,38 +114,99 @@ namespace Garage.GarageUI
             }
         }
 
-        //TODO: add this mathod
+        private static E_EngineType getEngineType()
+        {
+            E_EngineType engineType;
+            try
+            {
+                engineType = Utils.Parsers.ParseEngineType();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message + "can`t parse engine type");
+                engineType = Utils.Parsers.ParseEngineType();
+            }
+            return engineType;
+        }
+
         private static void addNewTruck()
         {
-            
-        }
-
-        //TODO: add this mathod
-        private static void addNewCar()
-        {
-            E_EngineType engineType;
             try
             {
-                engineType = Utils.Parsers.ParseEngineType();
+                bool hezerdosMat = false;
+                Console.WriteLine("the truck carry hezerdos matirials? (yes or no)");
+                string answer = Console.ReadLine();
+                if (answer.StartsWith("y") || answer.StartsWith("Y"))
+                {
+                    hezerdosMat = true;
+                } else
+                {
+                    hezerdosMat = false;
+                }
+                float maxWeight = Utils.Parsers.GetFloatFromUser("Enter truck max weight:");
+                float currentAmount;
+                string vehicleModel;
+                string vehicleLicensePlate;
+                string ownerName;
+                string ownerPhone;
+                string wheelManufacturerName;
+                Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out vehicleLicensePlate,
+                    out ownerName, out ownerPhone, out wheelManufacturerName);
+                GarageLogic.GarageLogic.GarageDirectory.Add(vehicleLicensePlate, VehicleFactory.CreateNewFuelTruck(currentAmount, hezerdosMat,
+                    maxWeight, vehicleModel, vehicleLicensePlate, ownerName, ownerPhone, wheelManufacturerName));
             }
             catch (FormatException ex)
             {
-                Console.WriteLine(ex.Message + "canwt parse engine type");
+                Console.WriteLine(ex.Message + "Can`t parse Truck!");
             }
-        }
 
-        //TODO: add this mathod
-        private static void addNewBike()
+        }
+        
+        private static void addNewCar(E_EngineType engineType)
         {
-            E_EngineType engineType;
             try
             {
-                engineType = Utils.Parsers.ParseEngineType();
+                E_Color color = Utils.Parsers.ParseCarColor();
+                E_NumOfDoors numOfDoors = Utils.Parsers.ParseNumOfCarDoors();
+                float currentAmount;
+                string vehicleModel;
+                string vehicleLicensePlate;
+                string ownerName;
+                string ownerPhone;
+                string wheelManufacturerName;
+                Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out vehicleLicensePlate, 
+                    out ownerName, out ownerPhone,out wheelManufacturerName);
+                GarageLogic.GarageLogic.GarageDirectory.Add(vehicleLicensePlate, VehicleFactory.CreateNewCar
+                    (currentAmount,engineType, color, numOfDoors, vehicleModel, vehicleLicensePlate, ownerName, ownerPhone, wheelManufacturerName));
             }
             catch (FormatException ex)
             {
-                Console.WriteLine(ex.Message + "canwt parse engine type");
+                Console.WriteLine(ex.Message + "Can`t parse Car!");
             }
+        }
+
+        private static void addNewBike(E_EngineType engineType)
+        {
+            try
+            {
+                E_LicenseType licenseType = Utils.Parsers.ParseLicenseType();
+                int engineVolume = Utils.Parsers.GetIntFromUser("Enter engine volume in cc:");
+                float currentAmount;
+                string vehicleModel;
+                string licensePlate;
+                string ownerName;
+                string ownerPhone;
+                string wheelManufacturerName;
+                Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out licensePlate,
+                    out ownerName, out ownerPhone, out wheelManufacturerName);
+                GarageLogic.GarageLogic.GarageDirectory.Add(licensePlate, VehicleFactory.CreateNewMotorcycle(currentAmount,engineType, 
+                    licenseType, engineVolume, vehicleModel, licensePlate, ownerName, ownerPhone, wheelManufacturerName));
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message + "Can`t parse Motorcycle!");
+            }
+
         }
 
         private static void addEnergyToVhicle()
@@ -246,10 +310,7 @@ namespace Garage.GarageUI
                 try
                 {
                     float airToAdd = Utils.Parsers.GetFloatFromUser("Enter air amount to add to the wheels");
-                    foreach (var item in vehicle.VehicleWheels)
-                    {
-                        item.AddAirToWheel(airToAdd);
-                    }
+                    vehicle.VehicleWheels.AddAirToWheel(airToAdd);
                 }
                 catch (ValueOutOfRangeException ex)
                 {

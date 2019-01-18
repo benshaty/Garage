@@ -19,10 +19,17 @@ namespace Garage.GarageLogic
         /// Constractor for Electric type Engine
         /// </summary>
         /// <param name="maxAmount">max amount of fuel can be</param>
-        public Electric(float maxAmount)
+        /// <param name="currentAmount">current amount of energy</param>
+        public Electric(float maxAmount, float currentAmount)
         {
             EngineType = E_EngineType.Electric;
-            CurrentAmount = maxAmount;
+            if (currentAmount > maxAmount)
+            {
+                CurrentAmount = maxAmount;
+            } else
+            {
+                CurrentAmount = currentAmount;
+            }
             MaxAmount = maxAmount;
         }
         /// <summary>

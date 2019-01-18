@@ -28,6 +28,7 @@ namespace Garage.GarageLogic
         {
             HazardousMaterials = hezerdosMat;
             MaxWeight = maxWeight;
+            NumOfWheels = E_NumOfWheels.Four;
         }
 
     }

@@ -11,13 +11,13 @@ namespace Garage.GarageLogic
     /// </summary>
     public static class EngineFactory
     {
-        public static Engine CreateNewEngine (E_FuelType fuelType,float maxAmount)
+        public static Engine CreateNewEngine (E_FuelType fuelType,float maxAmount, float currentAmount)
         {
-            return new Gasoline(fuelType,maxAmount);
+            return new Gasoline(fuelType,maxAmount,currentAmount);
         }
-        public static Engine CreateNewEngine(float maxAmount)
+        public static Engine CreateNewEngine(float maxAmount, float currentAmount)
         {
-            return new Electric(maxAmount);
+            return new Electric(maxAmount,currentAmount);
         }
     }
 }

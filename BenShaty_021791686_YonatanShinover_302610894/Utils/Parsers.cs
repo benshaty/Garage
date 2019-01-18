@@ -192,6 +192,24 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
+
+        public static void RefBasicVehicleDetails(out float currentAmount, out string vehicleModel,
+            out string vehicleLicensePlate, out string ownerName, out string ownerPhone, out string wheelManufacturerName)
+        {
+            Console.Write("Enter model:");
+            vehicleModel = Console.ReadLine();
+            Console.WriteLine("Enter licence plate:");
+            vehicleLicensePlate = Console.ReadLine();
+            Console.WriteLine("Enter owner name:");
+            ownerName = Console.ReadLine();
+            Console.WriteLine("Enter owner phone:");
+            ownerPhone = Console.ReadLine();
+            Console.WriteLine("Enter wheels manufacturer name:");
+            wheelManufacturerName = Console.ReadLine();
+            currentAmount = Utils.Parsers.GetIntFromUser("Enter current amount");
+        }
+
+
         public static E_VehicleType ParseVehicleType()
         {
             E_VehicleType result;
@@ -199,10 +217,7 @@ namespace Utils
             {
                 foreach (var item in Enum.GetValues(typeof(E_VehicleType)))
                 {
-                    if ((int)item > 0)
-                    {
-                        Console.WriteLine($"{(int)item} - {item}");
-                    }
+                    Console.WriteLine($"{(int)item} - {item}");
                 }
                 int intTempResualt = GetIntFromUser("Select Vehicle type");
                 switch ((E_VehicleType)intTempResualt)
@@ -225,12 +240,9 @@ namespace Utils
             {
                 foreach (var item in Enum.GetValues(typeof(E_EngineType)))
                 {
-                    if ((int)item > 0)
-                    {
-                        Console.WriteLine($"{(int)item} - {item}");
-                    }
+                    Console.WriteLine($"{(int)item} - {item}");
                 }
-                int intTempResualt = GetIntFromUser("Select Vehicle type");
+                int intTempResualt = GetIntFromUser("Select engine type");
                 switch ((E_EngineType)intTempResualt)
                 {
                     case E_EngineType.Fuel:
@@ -241,6 +253,79 @@ namespace Utils
                         throw new FormatException("Invalid selection");
                 }
             } while (!Enum.IsDefined(typeof(E_EngineType), result));
+            return result;
+        }
+        public static E_Color ParseCarColor()
+        {
+            E_Color result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_Color)))
+                {
+                    Console.WriteLine($"{(int)item} - {item}");
+                }
+                int intTempResualt = GetIntFromUser("Select car color");
+                switch ((E_Color)intTempResualt)
+                {
+                    case E_Color.Green:
+                    case E_Color.Silver:
+                    case E_Color.White:
+                    case E_Color.Black:
+                        result = (E_Color)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+            }
+            } while (!Enum.IsDefined(typeof(E_Color), result));
+            return result;
+        }
+
+        public static E_NumOfDoors ParseNumOfCarDoors()
+        {
+            E_NumOfDoors result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_NumOfDoors)))
+                {
+                    Console.WriteLine($"{(int)item} - {item}");
+                }
+                int intTempResualt = GetIntFromUser("Select num of doors");
+                switch ((E_NumOfDoors)intTempResualt)
+                {
+                    case E_NumOfDoors.Two:
+                    case E_NumOfDoors.Three:
+                    case E_NumOfDoors.Four:
+                    case E_NumOfDoors.Five:
+                        result = (E_NumOfDoors)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+            }
+            } while (!Enum.IsDefined(typeof(E_NumOfDoors), result));
+            return result;
+        }
+        public static E_LicenseType ParseLicenseType()
+        {
+            E_LicenseType result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_LicenseType)))
+                {
+                    Console.WriteLine($"{(int)item} - {item}");
+                }
+                int intTempResualt = GetIntFromUser("Select license type");
+                switch ((E_LicenseType)intTempResualt)
+                {
+                    case E_LicenseType.A1:
+                    case E_LicenseType.B1:
+                    case E_LicenseType.AA:
+                    case E_LicenseType.BB:
+                        result = (E_LicenseType)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+                }
+            } while (!Enum.IsDefined(typeof(E_LicenseType), result));
             return result;
         }
     }

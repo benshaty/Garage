@@ -28,6 +28,7 @@ namespace Garage.GarageLogic
         {
             LicenseType = licenseType;
             EngineVolume = engineVolume;
+            NumOfWheels = E_NumOfWheels.Two;
         }
     }
 }
