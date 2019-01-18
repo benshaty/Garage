@@ -53,6 +53,7 @@ namespace Garage.GarageUI
             switch (e_FirstMenu)
             {
                 case E_FirstMenu.Exit_system:
+                    result = false;
                     break;
                 case E_FirstMenu.Add_a_vehicle:
                     addAVehicle();
@@ -85,7 +86,63 @@ namespace Garage.GarageUI
         //TODO: fix addVehicle method
         private static void addAVehicle()
         {
-            Console.WriteLine("add a vehicle");
+            E_VehicleType vehicleType;
+            try
+            {
+                vehicleType = Utils.Parsers.ParseVehicleType();
+                switch (vehicleType)
+                {
+                    case E_VehicleType.Bike:
+                        addNewBike();
+                        break;
+                    case E_VehicleType.Car:
+                        addNewCar();
+                        break;
+                    case E_VehicleType.Truck:
+                        addNewTruck();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message + "Can`t parse vehicle type");
+            }
+        }
+
+        //TODO: add this mathod
+        private static void addNewTruck()
+        {
+            
+        }
+
+        //TODO: add this mathod
+        private static void addNewCar()
+        {
+            E_EngineType engineType;
+            try
+            {
+                engineType = Utils.Parsers.ParseEngineType();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message + "canwt parse engine type");
+            }
+        }
+
+        //TODO: add this mathod
+        private static void addNewBike()
+        {
+            E_EngineType engineType;
+            try
+            {
+                engineType = Utils.Parsers.ParseEngineType();
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.Message + "canwt parse engine type");
+            }
         }
 
         private static void addEnergyToVhicle()

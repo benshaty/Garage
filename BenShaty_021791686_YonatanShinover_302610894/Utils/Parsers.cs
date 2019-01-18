@@ -192,6 +192,56 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
-        
+        public static E_VehicleType ParseVehicleType()
+        {
+            E_VehicleType result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_VehicleType)))
+                {
+                    if ((int)item > 0)
+                    {
+                        Console.WriteLine($"{(int)item} - {item}");
+                    }
+                }
+                int intTempResualt = GetIntFromUser("Select Vehicle type");
+                switch ((E_VehicleType)intTempResualt)
+                {
+                    case E_VehicleType.Bike:
+                    case E_VehicleType.Car:
+                    case E_VehicleType.Truck:
+                        result = (E_VehicleType)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+                }
+            } while (!Enum.IsDefined(typeof(E_VehicleType), result));
+            return result;
+        }
+        public static E_EngineType ParseEngineType()
+        {
+            E_EngineType result;
+            do
+            {
+                foreach (var item in Enum.GetValues(typeof(E_EngineType)))
+                {
+                    if ((int)item > 0)
+                    {
+                        Console.WriteLine($"{(int)item} - {item}");
+                    }
+                }
+                int intTempResualt = GetIntFromUser("Select Vehicle type");
+                switch ((E_EngineType)intTempResualt)
+                {
+                    case E_EngineType.Fuel:
+                    case E_EngineType.Electric:
+                        result = (E_EngineType)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+                }
+            } while (!Enum.IsDefined(typeof(E_EngineType), result));
+            return result;
+        }
     }
 }
