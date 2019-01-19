@@ -17,21 +17,22 @@ namespace Utils
             {
 
             int intTempResualt = GetIntFromUser(massege);
-            switch ((E_FirstMenu)intTempResualt)
-            {
-                case E_FirstMenu.Exit_system:
-                case E_FirstMenu.Add_a_vehicle:
-                case E_FirstMenu.Show_vehicles_by_license_plate:
-                case E_FirstMenu.Show_vehicles_by_license_plate_with_filter:
-                case E_FirstMenu.Change_car_state:
-                case E_FirstMenu.Add_air_to_vehicle_wheels:
-                case E_FirstMenu.Add_energy_to_vehicle:
-                case E_FirstMenu.Show_vehicle_full_details:
-                    result = (E_FirstMenu)intTempResualt;
-                    break;
-                default:
-                    throw new FormatException("Invalid selection");
-            }
+                switch ((E_FirstMenu)intTempResualt)
+                {
+                    case E_FirstMenu.Exit_system:
+                    case E_FirstMenu.Add_a_vehicle:
+                    case E_FirstMenu.Show_vehicles_by_license_plate:
+                    case E_FirstMenu.Show_vehicles_by_license_plate_with_filter:
+                    case E_FirstMenu.Change_car_state:
+                    case E_FirstMenu.Add_air_to_vehicle_wheels:
+                    case E_FirstMenu.Add_energy_to_vehicle:
+                    case E_FirstMenu.Show_vehicle_full_details:
+                    case E_FirstMenu.Clear_the_screen:
+                        result = (E_FirstMenu)intTempResualt;
+                        break;
+                    default:
+                        throw new FormatException("Invalid selection");
+                }
             } while (!Enum.IsDefined(typeof(E_FirstMenu), result));
             return result;
         }

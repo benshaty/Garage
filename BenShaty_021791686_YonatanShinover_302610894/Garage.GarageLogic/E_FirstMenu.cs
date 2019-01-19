@@ -15,6 +15,7 @@ namespace Garage.GarageLogic
         Change_car_state,
         Add_air_to_vehicle_wheels,
         Add_energy_to_vehicle,
-        Show_vehicle_full_details
+        Show_vehicle_full_details,
+        Clear_the_screen
     }
 }

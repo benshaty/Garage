@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Garage.GarageUI
@@ -15,6 +16,8 @@ namespace Garage.GarageUI
             Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(70f,true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
             GarageLogic.GarageLogic.GarageDirectory.Add("sss", x);
             Console.WriteLine("Welcome to our garage");
+            Console.WriteLine("this project made by: Ben Shaty and Yonatan Shinover");
+            Console.WriteLine("Enjoy using the system");
             bool continueFlag = true;
             do
             {
@@ -43,7 +46,7 @@ namespace Garage.GarageUI
             catch (FormatException ex)
             {
                 Console.WriteLine(ex.Message);
-                getFirstMenuResponse();
+                userResponse = Utils.Parsers.ParseFirstMenu("Enter menu item:");
             }
             return userResponse;
         }
@@ -76,6 +79,9 @@ namespace Garage.GarageUI
                     break;
                 case E_FirstMenu.Show_vehicle_full_details:
                     showVehicleFullDetails();
+                    break;
+                case E_FirstMenu.Clear_the_screen:
+                    Console.Clear();
                     break;
                 default:
                     result = false;
@@ -378,7 +384,9 @@ namespace Garage.GarageUI
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
-                Console.WriteLine(item.Key);
+                Console.WriteLine($"License plate {item.Key}:");
+                Console.WriteLine("=============================================");
+                Console.WriteLine(item.Value.ToString());
             }
         }
         private static void showCarsByLicencePlate(E_VehicleStateInGarage state)
@@ -386,7 +394,10 @@ namespace Garage.GarageUI
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
                 if (item.Value.VehicleStateInGarage == state)
-                    Console.WriteLine(item.Key);
+                    Console.WriteLine($"License plate {item.Key}:");
+                    Console.WriteLine("=============================================");
+                    Console.WriteLine(item.Value.ToString());
+
             }
         }
         private static E_VehicleStateInGarage getVehicleStateFromUser()
