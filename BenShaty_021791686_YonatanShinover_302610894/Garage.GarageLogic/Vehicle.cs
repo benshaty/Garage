@@ -44,6 +44,17 @@ namespace Garage.GarageLogic
         /// This is the Vehicle engine type
         /// </summary>
         public Engine VehicleEngine { get; set; }
+        /// <summary>
+        /// This is the Vehicle object created
+        /// </summary>
+        /// <param name="vehicleType"></param>
+        /// <param name="vehicleModel"></param>
+        /// <param name="vehicleLicensePlate"></param>
+        /// <param name="ownerName"></param>
+        /// <param name="ownerPhone"></param>
+        /// <param name="vehicleState"></param>
+        /// <param name="wheelManufacturerName"></param>
+        /// <param name="vehicleEngine"></param>
         public Vehicle(E_VehicleType vehicleType ,string vehicleModel, string vehicleLicensePlate, string ownerName, 
             string ownerPhone, E_VehicleStateInGarage vehicleState, string wheelManufacturerName, Engine vehicleEngine)
         {
@@ -54,6 +65,7 @@ namespace Garage.GarageLogic
             VehicleStateInGarage = vehicleState;
             VehicleEngine = vehicleEngine;
             VehicleModel = vehicleModel;
+            ///switch between the Vehicle possible types (Car/Bike/Truck)
             switch (vehicleType)
             {
                 case E_VehicleType.Bike:
@@ -68,7 +80,7 @@ namespace Garage.GarageLogic
                 default:
                     throw new ArgumentException("Invalid vehicle type");
             }
-            
+            ///create a new show of vehicle wheels object
             VehicleWheels = new Wheel(wheelManufacturerName, maxAirPresureByVehicleType);
             VehicleEngine = vehicleEngine;
         }

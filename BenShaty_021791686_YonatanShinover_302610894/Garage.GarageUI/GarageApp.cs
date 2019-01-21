@@ -11,12 +11,16 @@ namespace Garage.GarageUI
 {
     public static class GarageApp
     {
+        /// <summary>
+        /// main method of the GarageApp class
+        /// </summary>
         public static void StartApp()
         {
+            ///inserting a new vehicle type to the system by default by creating a new "show" of vehicle object using the vehicle class. 
             Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(70f,true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
             GarageLogic.GarageLogic.GarageDirectory.Add("sss", x);
             Console.WriteLine("Welcome to our garage");
-            Console.WriteLine("this project made by: Ben Shaty and Yonatan Shinover");
+            Console.WriteLine("This project made by: Ben Shaty and Yonatan Shinover");
             Console.WriteLine("Enjoy using the system");
             bool continueFlag = true;
             do
