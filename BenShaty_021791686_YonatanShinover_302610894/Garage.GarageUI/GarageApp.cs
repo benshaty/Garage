@@ -149,7 +149,10 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message + "Can`t parse vehicle type");
             }
         }
-
+        /// <summary>
+        ///getting engine type enum from user method
+        /// </summary>
+        /// <returns></returns>
         private static E_EngineType getEngineType()
         {
             E_EngineType engineType;
@@ -164,7 +167,9 @@ namespace Garage.GarageUI
             }
             return engineType;
         }
-
+        /// <summary>
+        /// add new truck method
+        /// </summary>
         private static void addNewTruck()
         {
             try
@@ -197,7 +202,10 @@ namespace Garage.GarageUI
             }
 
         }
-        
+        /// <summary>
+        /// add a new car method
+        /// </summary>
+        /// <param name="engineType">enum value of engine type</param>
         private static void addNewCar(E_EngineType engineType)
         {
             try
@@ -220,7 +228,10 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message + "Can`t parse Car!");
             }
         }
-
+        /// <summary>
+        /// add a new bike method
+        /// </summary>
+        /// <param name="engineType">enum type value</param>
         private static void addNewBike(E_EngineType engineType)
         {
             try
@@ -244,7 +255,9 @@ namespace Garage.GarageUI
             }
 
         }
-
+        /// <summary>
+        /// add energy to vehicle method
+        /// </summary>
         private static void addEnergyToVhicle()
         {
             string licensePlate = getLicensePlateFromUser();
@@ -275,9 +288,13 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// the try to add energy type (fuel/electric)
+        /// </summary>
+        /// <param name="vehicle">vehicle value</param>
         private static void tryAddEnergy(Vehicle vehicle)
         {
+            ///using try/catch to identify the engine type
             switch (vehicle.VehicleEngine.EngineType)
             {
                 case E_EngineType.Fuel:
@@ -311,7 +328,9 @@ namespace Garage.GarageUI
                     throw new InvalidDataException("Unknown engine type");
             }
         }
-
+        /// <summary>
+        /// the show vehicle full details method by inserting a value from user
+        /// </summary>
         private static void showVehicleFullDetails()
         {
             string licensePlate = getLicensePlateFromUser();
@@ -335,7 +354,9 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// add air to vehicle's wheels method
+        /// </summary>
         private static void addAirToVehileWheels()
         {
 
@@ -372,7 +393,9 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// change the car state in the garage method
+        /// </summary>
         private static void changeCarState()
         {
             string licensePlate = getLicensePlateFromUser();
@@ -398,7 +421,10 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// get the license plate value from user method
+        /// </summary>
+        /// <returns></returns>
         private static string getLicensePlateFromUser()
         {
             Console.WriteLine("Enter Vehicle License Plate");
@@ -419,6 +445,10 @@ namespace Garage.GarageUI
                 Console.WriteLine(item.Value.ToString());
             }
         }
+        /// <summary>
+        /// showing car by entering license plate value.
+        /// </summary>
+        /// <param name="state"></param>
         private static void showCarsByLicencePlate(E_VehicleStateInGarage state)
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
@@ -430,6 +460,10 @@ namespace Garage.GarageUI
 
             }
         }
+        /// <summary>
+        /// getting the vehicle state in the garage method
+        /// </summary>
+        /// <returns></returns>
         private static E_VehicleStateInGarage getVehicleStateFromUser()
         {
             E_VehicleStateInGarage userResponse = E_VehicleStateInGarage.NotInGarage;

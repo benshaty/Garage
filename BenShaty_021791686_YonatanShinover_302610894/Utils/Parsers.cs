@@ -296,6 +296,10 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_EngineType), result));
             return result;
         }
+        /// <summary>
+        /// parse the car color type enum
+        /// </summary>
+        /// <returns></returns>
         public static E_Color ParseCarColor()
         {
             E_Color result;
