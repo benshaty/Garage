@@ -23,6 +23,7 @@ namespace Garage.GarageUI
             Console.WriteLine("This project made by: Ben Shaty and Yonatan Shinover");
             Console.WriteLine("Enjoy using the system");
             bool continueFlag = true;
+            ///loop to show menu until pressing exit
             do
             {
                 continueFlag = showmenu();
@@ -30,18 +31,28 @@ namespace Garage.GarageUI
             Console.WriteLine("Have a good one!!!");
         }
 
-
+        /// <summary>
+        /// private method for replacing "_" with spaces in the menu text.
+        /// </summary>
+        /// <returns></returns>
         private static bool showmenu()
         {
+            ///replacing "_" with spaces
             Console.WriteLine("=============================================");
             foreach (var item in Enum.GetValues(typeof(E_FirstMenu)))
             {
                 Console.WriteLine($"{(int) item} - {item.ToString().Replace("_"," ")}");
             }
+            ///calling for getFirstMenuResponse() method
             return (actionForFirstMenu(getFirstMenuResponse()));
         }
+        /// <summary>
+        /// The getFirstMenuResponse method
+        /// </summary>
+        /// <returns></returns>
         private static E_FirstMenu getFirstMenuResponse()
         {
+            ///create a new show and Entering a value from user and repeat menu if invalid after printing a message.
             E_FirstMenu userResponse = E_FirstMenu.Exit_system;
             try
             {
@@ -54,6 +65,11 @@ namespace Garage.GarageUI
             }
             return userResponse;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e_FirstMenu"></param>
+        /// <returns></returns>
         private static bool actionForFirstMenu(E_FirstMenu e_FirstMenu)
         {
             Console.WriteLine("=============================================");
@@ -64,27 +80,35 @@ namespace Garage.GarageUI
                     result = false;
                     break;
                 case E_FirstMenu.Add_a_vehicle:
+                    ///calling adding a vehicle method 
                     addAVehicle();
                     break;
                 case E_FirstMenu.Show_vehicles_by_license_plate:
+                    ///calling showCarsByLicencePlate method
                     showCarsByLicencePlate();
                     break;
                 case E_FirstMenu.Show_vehicles_by_license_plate_with_filter:
+                    ///calling showCarsByLicencePlateWithFilter method
                     showCarsByLicencePlateWithFilter();
                     break;
                 case E_FirstMenu.Change_car_state:
+                    ///calling changeCarState method
                     changeCarState();
                     break;
                 case E_FirstMenu.Add_air_to_vehicle_wheels:
+                    ///calling addAirToVehileWheels method
                     addAirToVehileWheels();
                     break;
                 case E_FirstMenu.Add_energy_to_vehicle:
+                    ///calling addEnergyToVhicle method
                     addEnergyToVhicle();
                     break;
                 case E_FirstMenu.Show_vehicle_full_details:
+                    ///calling showVehicleFullDetails method
                     showVehicleFullDetails();
                     break;
                 case E_FirstMenu.Clear_the_screen:
+                    ///clear the screen
                     Console.Clear();
                     break;
                 default:
@@ -93,7 +117,9 @@ namespace Garage.GarageUI
             }
             return result;
         }
-
+        /// <summary>
+        /// The add vehicle method
+        /// </summary>
         private static void addAVehicle()
         {
             E_VehicleType vehicleType;

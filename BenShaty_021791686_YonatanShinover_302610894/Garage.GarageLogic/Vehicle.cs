@@ -80,7 +80,7 @@ namespace Garage.GarageLogic
                 default:
                     throw new ArgumentException("Invalid vehicle type");
             }
-            ///create a new show of vehicle wheels object
+            ///create a new show of vehicle wheels object .
             VehicleWheels = new Wheel(wheelManufacturerName, maxAirPresureByVehicleType);
             VehicleEngine = vehicleEngine;
         }
