@@ -14,7 +14,7 @@ namespace Garage.GarageLogic
         /// <summary>
         /// This is the Engine type of a Vehicle
         /// </summary>
-        public E_EngineType EngineType { get; protected set; }
+        public E_EngineType EngineType { get; set; }
         public float CurrentAmount { get; set; }
         /// <summary>
         /// Add energy to an Electric Vehicle
