@@ -19,6 +19,19 @@ namespace Garage.GarageLogic
         /// This is the Doors number of a Car
         /// </summary>
         public E_NumOfDoors Doors { get; set; }
+        /// <summary>
+        /// this is the car full details
+        /// </summary>
+        /// <param name="carColor"></param>
+        /// <param name="carNumOfDoors"></param>
+        /// <param name="vehicleType"></param>
+        /// <param name="vehicleModel"></param>
+        /// <param name="vehicleLicensePlate"></param>
+        /// <param name="ownerName"></param>
+        /// <param name="OwnerPhone"></param>
+        /// <param name="vehicleState"></param>
+        /// <param name="wheelManufacturerName"></param>
+        /// <param name="vehicleEngine"></param>
         public Car(E_Color carColor, E_NumOfDoors carNumOfDoors, 
             E_VehicleType vehicleType, string vehicleModel, string vehicleLicensePlate, 
             string ownerName,string OwnerPhone, E_VehicleStateInGarage vehicleState, 

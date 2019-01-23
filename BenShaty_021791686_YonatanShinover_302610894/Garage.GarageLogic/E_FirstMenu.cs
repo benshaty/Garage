@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    /// first menu enum
+    /// </summary>
     public enum E_FirstMenu
     {
         Exit_system,

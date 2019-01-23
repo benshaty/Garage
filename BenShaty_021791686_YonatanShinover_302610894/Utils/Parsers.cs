@@ -10,6 +10,11 @@ namespace Utils
     /// </summary>
     public static class Parsers
     {
+        /// <summary>
+        /// parse the first menu enum from string
+        /// </summary>
+        /// <param name="massege">getting a string value</param>
+        /// <returns></returns>
         public static E_FirstMenu ParseFirstMenu(string massege)
         {
             E_FirstMenu result;
@@ -116,12 +121,19 @@ namespace Utils
             } while (!res);
             return returnNumber;
         }
-
+        /// <summary>
+        /// Getting the fuel type from user method
+        /// </summary>
+        /// <returns></returns>
         public static E_FuelType getFuelTypeFromUser()
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// parse from string to int
+        /// </summary>
+        /// <param name="dataToParse"></param>
+        /// <returns></returns>
         private static int parseInt(string dataToParse)
         {
             try
@@ -136,7 +148,10 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
-
+        /// <summary>
+        /// parse the state in garage enum
+        /// </summary>
+        /// <returns></returns>
         public static E_VehicleStateInGarage ParseStateInGarage()
         {
             E_VehicleStateInGarage result;
@@ -149,6 +164,7 @@ namespace Utils
                         Console.WriteLine($"{(int)item} - {item}");
                     }
                 }
+                ///switch the value entered by user
                 int intTempResualt = GetIntFromUser("Select Vehicle state");
                 switch ((E_VehicleStateInGarage)intTempResualt)
                 {
@@ -164,7 +180,11 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_VehicleStateInGarage), result));
             return result;
         }
-
+        /// <summary>
+        /// parse string to double
+        /// </summary>
+        /// <param name="dataToParse"></param>
+        /// <returns></returns>
         private static double parseDouble(string dataToParse)
         {
             try
@@ -179,6 +199,11 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
+        /// <summary>
+        /// parse the string to float.
+        /// </summary>
+        /// <param name="dataToParse"></param>
+        /// <returns></returns>
         private static float parseFloat(string dataToParse)
         {
             try
@@ -193,7 +218,15 @@ namespace Utils
                 throw new FormatException("Invalid Value", ex);
             }
         }
-
+        /// <summary>
+        /// transfer the vehicle details by reference using (the out key) method 
+        /// </summary>
+        /// <param name="currentAmount"></param>
+        /// <param name="vehicleModel"></param>
+        /// <param name="vehicleLicensePlate"></param>
+        /// <param name="ownerName"></param>
+        /// <param name="ownerPhone"></param>
+        /// <param name="wheelManufacturerName"></param>
         public static void RefBasicVehicleDetails(out float currentAmount, out string vehicleModel,
             out string vehicleLicensePlate, out string ownerName, out string ownerPhone, out string wheelManufacturerName)
         {
@@ -225,7 +258,10 @@ namespace Utils
             currentAmount = Utils.Parsers.GetIntFromUser("Enter current amount");
         }
 
-
+        /// <summary>
+        /// parse the vehicle type enum
+        /// </summary>
+        /// <returns></returns>
         public static E_VehicleType ParseVehicleType()
         {
             E_VehicleType result;
@@ -249,6 +285,10 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_VehicleType), result));
             return result;
         }
+        /// <summary>
+        /// parse the engine type enum
+        /// </summary>
+        /// <returns></returns>
         public static E_EngineType ParseEngineType()
         {
             E_EngineType result;
@@ -271,6 +311,10 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_EngineType), result));
             return result;
         }
+        /// <summary>
+        /// parse the car color type enum
+        /// </summary>
+        /// <returns></returns>
         public static E_Color ParseCarColor()
         {
             E_Color result;
@@ -295,7 +339,10 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_Color), result));
             return result;
         }
-
+        /// <summary>
+        /// parse the num of doors enum
+        /// </summary>
+        /// <returns></returns>
         public static E_NumOfDoors ParseNumOfCarDoors()
         {
             E_NumOfDoors result;
@@ -320,6 +367,7 @@ namespace Utils
             } while (!Enum.IsDefined(typeof(E_NumOfDoors), result));
             return result;
         }
+        ///Parse the license type enum
         public static E_LicenseType ParseLicenseType()
         {
             E_LicenseType result;
