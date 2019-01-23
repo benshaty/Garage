@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Garage.GarageLogic
 {
@@ -32,5 +33,15 @@ namespace Garage.GarageLogic
             return vehicleToReturn;
         }
 
+        public static void AddSampleGarageData()
+        {
+            Vehicle sample = (Vehicle)VehicleFactory.CreateNewCar(30.0f, E_EngineType.Fuel, E_Color.White, E_NumOfDoors.Five, "Toyota Acura", "BenTheKing", "Ben shaty", "0541111111", "Tesla");
+            GarageDirectory.Add("BenTheKing", sample);
+            sample = (Vehicle)VehicleFactory.CreateNewCar(26.0f, E_EngineType.Fuel, E_Color.White, E_NumOfDoors.Four, "Toyota Corola", "YonatanTheKing", "Yonatan shinover", "0521111111", "Tislam");
+            GarageDirectory.Add("YonatanTheKing", sample);
+
+
+
+        }
     }
 }

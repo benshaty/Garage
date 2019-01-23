@@ -54,6 +54,7 @@ namespace Garage.GarageLogic
             VehicleStateInGarage = vehicleState;
             VehicleEngine = vehicleEngine;
             VehicleModel = vehicleModel;
+            VehicleType = vehicleType;
             switch (vehicleType)
             {
                 case E_VehicleType.Bike:
@@ -80,12 +81,12 @@ namespace Garage.GarageLogic
         public override string ToString()
         {
             // set basic properties text to result
-            string res =  "Vehicle: "+ VehicleLicensePlate + ", Model: " + VehicleModel + ", Owner: " + 
+            string res =  "Vehicle(" + VehicleType + "): "+ VehicleLicensePlate + ", Model: " + VehicleModel + ", Owner: " + 
                 OwnerName + ", Owner phone: " + OwnerPhone + ", State in Garage: " + VehicleStateInGarage + ", ";
             // add details to result string
-            res += "Wheels manufacturer name: " + VehicleWheels.ManufacturerName + ", Wheels air presure" + VehicleWheels.WheelAirPresure + ", ";
+            res += "Wheels manufacturer name: " + VehicleWheels.ManufacturerName + ", Wheels air presure: " + VehicleWheels.WheelAirPresure + ", ";
             // add engine type to result string
-            res += VehicleEngine.EngineType + ", " + VehicleEngine.CurrentAmount + ", ";
+            res += "Engine: " + VehicleEngine.EngineType + ", Current amount: " + VehicleEngine.CurrentAmount + ", ";
             // check if engine type is fuel and add data to result string
             switch (VehicleEngine.EngineType)
             {
@@ -93,7 +94,7 @@ namespace Garage.GarageLogic
                     // cast the engine to fuel type
                     var tempEngine = (Gasoline)VehicleEngine;
                     // add fuel engine fuel type
-                    res += tempEngine.FuelType + " ";
+                    res += "Fuel type: "+  tempEngine.FuelType + " ";
                     break;
                 case E_EngineType.Electric:
                     break;

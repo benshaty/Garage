@@ -31,10 +31,10 @@ namespace Garage.GarageLogic
             switch (engineType)
             {
                 case E_EngineType.Fuel:
-                    engine = EngineFactory.CreateNewEngine(2.8f, currentAmount);
+                    engine = EngineFactory.CreateNewEngine(E_FuelType.Octan98, 50.0f, currentAmount);
                     break;
                 case E_EngineType.Electric:
-                    engine = EngineFactory.CreateNewEngine(E_FuelType.Octan98, 50.0f, currentAmount);
+                    engine = EngineFactory.CreateNewEngine(2.8f, currentAmount);
                     break;
                 default:
                     throw new ArgumentException("Invalid Type");

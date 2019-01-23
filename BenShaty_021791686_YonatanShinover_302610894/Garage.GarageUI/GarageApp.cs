@@ -13,8 +13,7 @@ namespace Garage.GarageUI
     {
         public static void StartApp()
         {
-            Vehicle x = (Vehicle) VehicleFactory.CreateNewFuelTruck(70f,true, 33, "model", "licecnseplate", "cdcdscs", "cdscdsc", "cdcdscds");
-            GarageLogic.GarageLogic.GarageDirectory.Add("sss", x);
+            GarageLogic.GarageLogic.AddSampleGarageData();
             Console.WriteLine("Welcome to our garage");
             Console.WriteLine("this project made by: Ben Shaty and Yonatan Shinover");
             Console.WriteLine("Enjoy using the system");
@@ -140,8 +139,12 @@ namespace Garage.GarageUI
             try
             {
                 bool hezerdosMat = false;
-                Console.WriteLine("the truck carry hezerdos matirials? (yes or no)");
-                string answer = Console.ReadLine();
+                string answer;
+                do
+                {
+                    Console.WriteLine("the truck carry hezerdos matirials? (yes or no)");
+                    answer = Console.ReadLine();
+                } while (string.IsNullOrEmpty(answer));
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     hezerdosMat = true;
@@ -233,8 +236,12 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                Console.WriteLine("Do you want to put vehicle in the garage?");
-                string answer = Console.ReadLine();
+                string answer;
+                do
+                {
+                    Console.WriteLine("Do you want to put vehicle in the garage?");
+                    answer = Console.ReadLine();
+                } while (string.IsNullOrEmpty(answer));
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -288,13 +295,20 @@ namespace Garage.GarageUI
             try
             {
                 Vehicle vehicle = GarageLogic.GarageLogic.GetVehicleByLicensePlate(licensePlate);
+                Console.WriteLine("=============================================");
                 Console.WriteLine(vehicle.ToString());
+                Console.WriteLine("=============================================");
+
             }
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                Console.WriteLine("Do you want to put vehicle in the garage?");
-                string answer = Console.ReadLine();
+                string answer;
+                do
+                {
+                    Console.WriteLine("Do you want to put vehicle in the garage?");
+                    answer = Console.ReadLine();
+                } while (string.IsNullOrEmpty(answer));
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -330,8 +344,13 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                Console.WriteLine("Do you want to put vehicle in the garage?");
-                string answer = Console.ReadLine();
+
+                string answer;
+                do
+                {
+                    Console.WriteLine("Do you want to put vehicle in the garage?");
+                    answer = Console.ReadLine();
+                } while (string.IsNullOrEmpty(answer));
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -356,8 +375,12 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                Console.WriteLine("Do you want to put vehicle in the garage?");
-                string answer = Console.ReadLine();
+                string answer;
+                do
+                {
+                    Console.WriteLine("Do you want to put vehicle in the garage?");
+                    answer = Console.ReadLine();
+                } while (string.IsNullOrEmpty(answer));
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -371,9 +394,13 @@ namespace Garage.GarageUI
 
         private static string getLicensePlateFromUser()
         {
-            Console.WriteLine("Enter Vehicle License Plate");
-            string result = Console.ReadLine();
-            return result;
+            string answer;
+            do
+            {
+                Console.WriteLine("Enter Vehicle License Plate");
+                answer = Console.ReadLine();
+            } while (string.IsNullOrEmpty(answer));
+            return answer;
         }
 
         private static void showCarsByLicencePlateWithFilter()
@@ -384,6 +411,7 @@ namespace Garage.GarageUI
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
+                Console.WriteLine("=============================================");
                 Console.WriteLine($"License plate {item.Key}:");
                 Console.WriteLine("=============================================");
                 Console.WriteLine(item.Value.ToString());
@@ -394,9 +422,15 @@ namespace Garage.GarageUI
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
                 if (item.Value.VehicleStateInGarage == state)
+                {
+                    Console.WriteLine("=============================================");
                     Console.WriteLine($"License plate {item.Key}:");
                     Console.WriteLine("=============================================");
                     Console.WriteLine(item.Value.ToString());
+                } else
+                {
+                    Console.WriteLine("Vehicle not in garage");
+                }
 
             }
         }

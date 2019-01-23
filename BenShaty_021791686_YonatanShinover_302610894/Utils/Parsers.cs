@@ -197,16 +197,31 @@ namespace Utils
         public static void RefBasicVehicleDetails(out float currentAmount, out string vehicleModel,
             out string vehicleLicensePlate, out string ownerName, out string ownerPhone, out string wheelManufacturerName)
         {
-            Console.Write("Enter model:");
-            vehicleModel = Console.ReadLine();
-            Console.WriteLine("Enter licence plate:");
-            vehicleLicensePlate = Console.ReadLine();
-            Console.WriteLine("Enter owner name:");
-            ownerName = Console.ReadLine();
-            Console.WriteLine("Enter owner phone:");
-            ownerPhone = Console.ReadLine();
-            Console.WriteLine("Enter wheels manufacturer name:");
-            wheelManufacturerName = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter model:");
+                vehicleModel = Console.ReadLine();
+            } while (string.IsNullOrEmpty(vehicleModel));
+            do
+            {
+                Console.WriteLine("Enter licence plate:");
+                vehicleLicensePlate = Console.ReadLine();
+            } while (string.IsNullOrEmpty(vehicleLicensePlate));
+            do
+            {
+                Console.WriteLine("Enter owner name:");
+                ownerName = Console.ReadLine();
+            } while (string.IsNullOrEmpty(ownerName));
+            do
+            {
+                Console.WriteLine("Enter owner phone:");
+                ownerPhone = Console.ReadLine();
+            } while (string.IsNullOrEmpty(vehicleModel));
+            do
+            {
+                Console.WriteLine("Enter wheels manufacturer name:");
+                wheelManufacturerName = Console.ReadLine();
+            } while (string.IsNullOrEmpty(vehicleModel));
             currentAmount = Utils.Parsers.GetIntFromUser("Enter current amount");
         }
 
