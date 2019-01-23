@@ -11,13 +11,18 @@ namespace Garage.GarageUI
 {
     public static class GarageApp
     {
+        /// <summary>
+        /// main method of the GarageApp class
+        /// </summary>
         public static void StartApp()
         {
+            ///inserting a new vehicle type to the system by default by creating a new "show" of vehicle object using the vehicle class. 
             GarageLogic.GarageLogic.AddSampleGarageData();
             Console.WriteLine("Welcome to our garage");
-            Console.WriteLine("this project made by: Ben Shaty and Yonatan Shinover");
+            Console.WriteLine("This project made by: Ben Shaty and Yonatan Shinover");
             Console.WriteLine("Enjoy using the system");
             bool continueFlag = true;
+            ///loop to show menu until pressing exit
             do
             {
                 continueFlag = showmenu();
@@ -25,18 +30,28 @@ namespace Garage.GarageUI
             Console.WriteLine("Have a good one!!!");
         }
 
-
+        /// <summary>
+        /// private method for replacing "_" with spaces in the menu text.
+        /// </summary>
+        /// <returns></returns>
         private static bool showmenu()
         {
+            ///replacing "_" with spaces
             Console.WriteLine("=============================================");
             foreach (var item in Enum.GetValues(typeof(E_FirstMenu)))
             {
-                Console.WriteLine($"{(int) item} - {item.ToString().Replace("_"," ")}");
+                Console.WriteLine($"{(int)item} - {item.ToString().Replace("_", " ")}");
             }
+            ///calling for getFirstMenuResponse() method
             return (actionForFirstMenu(getFirstMenuResponse()));
         }
+        /// <summary>
+        /// The getFirstMenuResponse method
+        /// </summary>
+        /// <returns></returns>
         private static E_FirstMenu getFirstMenuResponse()
         {
+            ///create a new show and Entering a value from user and repeat menu if invalid after printing a message.
             E_FirstMenu userResponse = E_FirstMenu.Exit_system;
             try
             {
@@ -49,6 +64,11 @@ namespace Garage.GarageUI
             }
             return userResponse;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e_FirstMenu"></param>
+        /// <returns></returns>
         private static bool actionForFirstMenu(E_FirstMenu e_FirstMenu)
         {
             Console.WriteLine("=============================================");
@@ -59,27 +79,35 @@ namespace Garage.GarageUI
                     result = false;
                     break;
                 case E_FirstMenu.Add_a_vehicle:
+                    ///calling adding a vehicle method 
                     addAVehicle();
                     break;
                 case E_FirstMenu.Show_vehicles_by_license_plate:
+                    ///calling showCarsByLicencePlate method
                     showCarsByLicencePlate();
                     break;
                 case E_FirstMenu.Show_vehicles_by_license_plate_with_filter:
+                    ///calling showCarsByLicencePlateWithFilter method
                     showCarsByLicencePlateWithFilter();
                     break;
                 case E_FirstMenu.Change_car_state:
+                    ///calling changeCarState method
                     changeCarState();
                     break;
                 case E_FirstMenu.Add_air_to_vehicle_wheels:
+                    ///calling addAirToVehileWheels method
                     addAirToVehileWheels();
                     break;
                 case E_FirstMenu.Add_energy_to_vehicle:
+                    ///calling addEnergyToVhicle method
                     addEnergyToVhicle();
                     break;
                 case E_FirstMenu.Show_vehicle_full_details:
+                    ///calling showVehicleFullDetails method
                     showVehicleFullDetails();
                     break;
                 case E_FirstMenu.Clear_the_screen:
+                    ///clear the screen
                     Console.Clear();
                     break;
                 default:
@@ -88,7 +116,9 @@ namespace Garage.GarageUI
             }
             return result;
         }
-
+        /// <summary>
+        /// The add vehicle method
+        /// </summary>
         private static void addAVehicle()
         {
             E_VehicleType vehicleType;
@@ -118,7 +148,10 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message + "Can`t parse vehicle type");
             }
         }
-
+        /// <summary>
+        ///getting engine type enum from user method
+        /// </summary>
+        /// <returns></returns>
         private static E_EngineType getEngineType()
         {
             E_EngineType engineType;
@@ -133,22 +166,21 @@ namespace Garage.GarageUI
             }
             return engineType;
         }
-
+        /// <summary>
+        /// add new truck method
+        /// </summary>
         private static void addNewTruck()
         {
             try
             {
                 bool hezerdosMat = false;
-                string answer;
-                do
-                {
-                    Console.WriteLine("the truck carry hezerdos matirials? (yes or no)");
-                    answer = Console.ReadLine();
-                } while (string.IsNullOrEmpty(answer));
+                Console.WriteLine("the truck carry hezerdos matirials? (yes or no)");
+                string answer = Console.ReadLine();
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     hezerdosMat = true;
-                } else
+                }
+                else
                 {
                     hezerdosMat = false;
                 }
@@ -170,7 +202,10 @@ namespace Garage.GarageUI
             }
 
         }
-        
+        /// <summary>
+        /// add a new car method
+        /// </summary>
+        /// <param name="engineType">enum value of engine type</param>
         private static void addNewCar(E_EngineType engineType)
         {
             try
@@ -183,17 +218,20 @@ namespace Garage.GarageUI
                 string ownerName;
                 string ownerPhone;
                 string wheelManufacturerName;
-                Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out vehicleLicensePlate, 
-                    out ownerName, out ownerPhone,out wheelManufacturerName);
+                Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out vehicleLicensePlate,
+                    out ownerName, out ownerPhone, out wheelManufacturerName);
                 GarageLogic.GarageLogic.GarageDirectory.Add(vehicleLicensePlate, VehicleFactory.CreateNewCar
-                    (currentAmount,engineType, color, numOfDoors, vehicleModel, vehicleLicensePlate, ownerName, ownerPhone, wheelManufacturerName));
+                    (currentAmount, engineType, color, numOfDoors, vehicleModel, vehicleLicensePlate, ownerName, ownerPhone, wheelManufacturerName));
             }
             catch (FormatException ex)
             {
                 Console.WriteLine(ex.Message + "Can`t parse Car!");
             }
         }
-
+        /// <summary>
+        /// add a new bike method
+        /// </summary>
+        /// <param name="engineType">enum type value</param>
         private static void addNewBike(E_EngineType engineType)
         {
             try
@@ -208,7 +246,7 @@ namespace Garage.GarageUI
                 string wheelManufacturerName;
                 Utils.Parsers.RefBasicVehicleDetails(out currentAmount, out vehicleModel, out licensePlate,
                     out ownerName, out ownerPhone, out wheelManufacturerName);
-                GarageLogic.GarageLogic.GarageDirectory.Add(licensePlate, VehicleFactory.CreateNewMotorcycle(currentAmount,engineType, 
+                GarageLogic.GarageLogic.GarageDirectory.Add(licensePlate, VehicleFactory.CreateNewMotorcycle(currentAmount, engineType,
                     licenseType, engineVolume, vehicleModel, licensePlate, ownerName, ownerPhone, wheelManufacturerName));
             }
             catch (FormatException ex)
@@ -217,7 +255,9 @@ namespace Garage.GarageUI
             }
 
         }
-
+        /// <summary>
+        /// add energy to vehicle method
+        /// </summary>
         private static void addEnergyToVhicle()
         {
             string licensePlate = getLicensePlateFromUser();
@@ -236,12 +276,8 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                string answer;
-                do
-                {
-                    Console.WriteLine("Do you want to put vehicle in the garage?");
-                    answer = Console.ReadLine();
-                } while (string.IsNullOrEmpty(answer));
+                Console.WriteLine("Do you want to put vehicle in the garage?");
+                string answer = Console.ReadLine();
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -252,9 +288,13 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// the try to add energy type (fuel/electric)
+        /// </summary>
+        /// <param name="vehicle">vehicle value</param>
         private static void tryAddEnergy(Vehicle vehicle)
         {
+            ///using try/catch to identify the engine type
             switch (vehicle.VehicleEngine.EngineType)
             {
                 case E_EngineType.Fuel:
@@ -288,27 +328,22 @@ namespace Garage.GarageUI
                     throw new InvalidDataException("Unknown engine type");
             }
         }
-
+        /// <summary>
+        /// the show vehicle full details method by inserting a value from user
+        /// </summary>
         private static void showVehicleFullDetails()
         {
             string licensePlate = getLicensePlateFromUser();
             try
             {
                 Vehicle vehicle = GarageLogic.GarageLogic.GetVehicleByLicensePlate(licensePlate);
-                Console.WriteLine("=============================================");
                 Console.WriteLine(vehicle.ToString());
-                Console.WriteLine("=============================================");
-
             }
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                string answer;
-                do
-                {
-                    Console.WriteLine("Do you want to put vehicle in the garage?");
-                    answer = Console.ReadLine();
-                } while (string.IsNullOrEmpty(answer));
+                Console.WriteLine("Do you want to put vehicle in the garage?");
+                string answer = Console.ReadLine();
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -319,7 +354,9 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// add air to vehicle's wheels method
+        /// </summary>
         private static void addAirToVehileWheels()
         {
 
@@ -344,13 +381,8 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-
-                string answer;
-                do
-                {
-                    Console.WriteLine("Do you want to put vehicle in the garage?");
-                    answer = Console.ReadLine();
-                } while (string.IsNullOrEmpty(answer));
+                Console.WriteLine("Do you want to put vehicle in the garage?");
+                string answer = Console.ReadLine();
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -361,7 +393,9 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// change the car state in the garage method
+        /// </summary>
         private static void changeCarState()
         {
             string licensePlate = getLicensePlateFromUser();
@@ -375,12 +409,8 @@ namespace Garage.GarageUI
             catch (KeyNotFoundException)
             {
                 Console.WriteLine("Vehicle is not in garage");
-                string answer;
-                do
-                {
-                    Console.WriteLine("Do you want to put vehicle in the garage?");
-                    answer = Console.ReadLine();
-                } while (string.IsNullOrEmpty(answer));
+                Console.WriteLine("Do you want to put vehicle in the garage?");
+                string answer = Console.ReadLine();
                 if (answer.StartsWith("y") || answer.StartsWith("Y"))
                 {
                     addAVehicle();
@@ -391,49 +421,49 @@ namespace Garage.GarageUI
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// get the license plate value from user method
+        /// </summary>
+        /// <returns></returns>
         private static string getLicensePlateFromUser()
         {
-            string answer;
-            do
-            {
-                Console.WriteLine("Enter Vehicle License Plate");
-                answer = Console.ReadLine();
-            } while (string.IsNullOrEmpty(answer));
-            return answer;
+            Console.WriteLine("Enter Vehicle License Plate");
+            string result = Console.ReadLine();
+            return result;
         }
 
         private static void showCarsByLicencePlateWithFilter()
         {
-            showCarsByLicencePlate(getVehicleStateFromUser());  
+            showCarsByLicencePlate(getVehicleStateFromUser());
         }
         private static void showCarsByLicencePlate()
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
-                Console.WriteLine("=============================================");
                 Console.WriteLine($"License plate {item.Key}:");
                 Console.WriteLine("=============================================");
                 Console.WriteLine(item.Value.ToString());
             }
         }
+        /// <summary>
+        /// showing car by entering license plate value.
+        /// </summary>
+        /// <param name="state"></param>
         private static void showCarsByLicencePlate(E_VehicleStateInGarage state)
         {
             foreach (var item in GarageLogic.GarageLogic.GarageDirectory)
             {
                 if (item.Value.VehicleStateInGarage == state)
-                {
-                    Console.WriteLine("=============================================");
                     Console.WriteLine($"License plate {item.Key}:");
-                    Console.WriteLine("=============================================");
-                    Console.WriteLine(item.Value.ToString());
-                } else
-                {
-                    Console.WriteLine("Vehicle not in garage");
-                }
+                Console.WriteLine("=============================================");
+                Console.WriteLine(item.Value.ToString());
 
             }
         }
+        /// <summary>
+        /// getting the vehicle state in the garage method
+        /// </summary>
+        /// <returns></returns>
         private static E_VehicleStateInGarage getVehicleStateFromUser()
         {
             E_VehicleStateInGarage userResponse = E_VehicleStateInGarage.NotInGarage;

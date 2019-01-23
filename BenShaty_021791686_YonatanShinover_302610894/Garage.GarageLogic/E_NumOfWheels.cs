@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Garage.GarageLogic
 {
+    /// <summary>
+    /// This the doors number enum
+    /// </summary>
     public enum E_NumOfWheels
     {
         Two = 2,
